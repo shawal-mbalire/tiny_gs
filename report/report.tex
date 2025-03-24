@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\hypersetup{hidelinks}
 
 \title{Creating a LoRa Satellite Ground Station}
 \author{Shawal Mbalire}
@@ -11,29 +12,39 @@
 \maketitle
 
 \begin{center}
-    \begin{tabular}{|c|c|}
+    \renewcommand{\arraystretch}{1.5} % Adjust row height
+    \begin{tabular}{|c|l|l|}
         \hline
-        \textbf{Group Member} & \textbf{Role} \\
+        \textbf{No.} & \textbf{Name} & \textbf{Reg. No.} \\
         \hline
-        Shawal Mbalire & Lead Researcher \\
+        1 & Shawal Mbalire & 21/U/0851 \\
         \hline
-        Member 2 & Data Analyst \\
+        2 & Abdulhakim B. Lukwago & 21/U/0627 \\
         \hline
-        Member 3 & Antenna Designer \\
+        3 & Ssendagire Gilbert & 17/U/1124 \\
+        \hline
+        4 & Besigye Mukama & 21/U/10507/PS \\
+        \hline
+        5 & Olupot Emmanuel & 20/U/16032 \\
+        \hline
+        6 & Aradi Alamin Abdallah & 18/X/40426/PS \\
         \hline
     \end{tabular}
 \end{center}
+
+
 
 \section{Introduction}
 The TinyGS project \cite{tinygs} forms the basis of this project. TinyGS is an open network of Ground Stations distributed around the world to receive and operate LoRa satellites, weather probes, and other flying objects, using cost-effective and versatile modules. With an active Telegram community and GitHub resources, it is possible to build a LoRa-based ground station. This report documents the process of setting up a ground station.
 
 This report is structured as follows:
-\begin{enumerate}
+\begin{itemize}
     \item Installation
     \item Configuration
     \item Antenna Building
+    \item Radio Engineering Theory
     \item Data Analysis
-\end{enumerate}
+\end{itemize}
 
 \section{Installation}
 To install the TinyGS firmware, a supported device is required. A list of supported devices is available on the TinyGS GitHub page. For this setup, a LILYGO T3 v1.6 was selected as it is one of the supported devices, simplifying the process.
@@ -95,4 +106,3 @@ Preliminary results indicated that packet reception was highest during the early
 \end{thebibliography}
 
 \end{document}
-
