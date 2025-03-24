@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hhline}
+\usepackage{datetime}
 \usepackage{times}
 \usepackage[margin=1cm]{geometry}
 \hypersetup{hidelinks}
@@ -18,15 +19,15 @@
     \vspace{0.5cm}
     \large Using the TinyGS Project \\
 }
-\author{Group 1}
-\date{March 14, 2025}
+\author{Group 2}
+\date{\today}
 
 \begin{document}
 
 \maketitle
 
 \begin{center}
-    \renewcommand{\arraystretch}{1.5} % Adjust row height
+    \renewcommand{\arraystretch}{1.5} 
     \begin{tabular}{|c|l|l|}
         \hline
         \textbf{No.} & \textbf{Name} & \textbf{Reg. No.} \\
@@ -45,6 +46,8 @@
         \hline
         7&Onyango Hilary &21/U/0842 \\
         \hline
+        8 & Ochengel Sulaiman & 20/U/2540/PS \\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -58,7 +61,6 @@ This report is structured as follows:
     \item Installation
     \item Configuration
     \item Antenna Building
-    \item Radio Engineering Theory
     \item Data Analysis
 \end{itemize}
 
@@ -101,7 +103,7 @@ Once the station was connected to TinyGS and the MQTT server, receiving packets 
 The TinyGS configuration site suggests various antenna designs, one of which is the \href{http://www.n1gy.com/simple-ground-plane-antennas.html}{quarter-wave grounded antenna design}. This design was implemented and demonstrated acceptable performance during daylight hours. The antenna was resoldered to avoid shortages between the ground and the antenna. The new solder job is shown in the image below.
 \begin{figure}[H]
     \centering
-    \includegraphics[height=\textwidth]{../images/antennaeRedesign.jpg}
+    \includegraphics[height=0.5\textwidth]{../images/antennaeRedesign.jpg}
     \caption{Antenna solder job}
     \label{fig:antenna_solder_job}
 \end{figure}
@@ -198,7 +200,7 @@ The heatmap below shows the frequencies of data reception forr the different hou
 % 75%      2337.500000
 % max      3433.000000
 % Name: 📏 Distance, dtype: float64
-The average distance of satelite from station was 1768.07km with a maximum distance of 3433km. This is a good distance for the ground station to be able to receive data from the satellites. The distance was also analyzed in relation to the elevation angle of the satellites. The data showed that there was a positive correlation between the distance and elevation angle, indicating that as the elevation angle increased, the distance from the ground station also increased.
+The average distance of satelite from station was 1768.07km with a maximum distance of 3433km. This is a good distance for the ground station to be able to receive data from the satellites. The distance was also analyzed in relation to the elevation angle of the satellites. The data showed that there was a negative correlation between the distance and elevation angle, indicating that as the elevation angle increased, the distance from the ground station decreased.
 
 \begin{figure}[H]
     \centering
