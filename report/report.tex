@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\title{Creating a LoRa Satellite Ground Station}
+\author{Shawal Mbalire}
+\date{March 14, 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Group Member} & \textbf{Role} \\
+        \hline
+        Shawal Mbalire & Lead Researcher \\
+        \hline
+        Member 2 & Data Analyst \\
+        \hline
+        Member 3 & Antenna Designer \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\section{Introduction}
+The TinyGS project \cite{tinygs} forms the basis of this project. TinyGS is an open network of Ground Stations distributed around the world to receive and operate LoRa satellites, weather probes, and other flying objects, using cost-effective and versatile modules. With an active Telegram community and GitHub resources, it is possible to build a LoRa-based ground station. This report documents the process of setting up a ground station.
+
+This report is structured as follows:
+\begin{enumerate}
+    \item Installation
+    \item Configuration
+    \item Antenna Building
+    \item Data Analysis
+\end{enumerate}
+
+\section{Installation}
+To install the TinyGS firmware, a supported device is required. A list of supported devices is available on the TinyGS GitHub page. For this setup, a LILYGO T3 v1.6 was selected as it is one of the supported devices, simplifying the process.
+
+The device was connected to a computer, and the installer at \href{http://installer.tinygs.com}{TinyGS Installer} was accessed. This provides an online web installer for firmware installation. The installer supports Chromium-based browsers, so one should ensure that a compatible browser is used. The installation was completed by following the on-screen instructions.
+
+\section{Configuration}
+Following installation, the LILYGO device rebooted and created a WiFi network for configuration. Connection to this network, named ``My TinyGS,'' was established, and the configuration page was accessed via the IP address \texttt{192.168.4.1}.
+
+The configuration steps included:
+\begin{enumerate}
+    \item Assigning a name to the station.
+    \item Creating a password for accessing the admin dashboard.
+    \item Determining latitude and longitude using an online service such as \href{http://latlong.net}{latlong.net}, and entering the values up to three decimal places.
+    \item Obtaining MQTT credentials:
+    \begin{itemize}
+        \item Joining the Telegram group at \href{https://tinygs.com}{TinyGS}.
+        \item Sending a private message to \texttt{@tinygs\_personal\_bot} with the command \texttt{/mqtt}.
+        \item Entering the provided credentials, noting that the username might begin with a \texttt{-} character.
+    \end{itemize}
+    \item Selecting the appropriate board type under Board Configuration. For boards with screens, this enables display functionality. The selected board type was the 433MHz LILYGO T3\_V1.6.1.
+    \item Applying the changes and optionally restarting the station, which causes the LILYGO to reboot and disconnect from WiFi.
+\end{enumerate}
+
+The LILYGO device then attempted to connect to the specified WiFi network and the TinyGS MQTT server. Upon successful connection, the station became viewable on the TinyGS website.
+
+Two dashboards were accessible:
+\begin{itemize}
+    \item A local dashboard was available on the same WiFi network as the LILYGO, accessible via an IP address displayed on the device's screen (e.g., \texttt{192.168.226.28}). This allowed local monitoring and configuration editing.
+    \item The TinyGS web dashboard was accessed by sending \texttt{/weblogin} to \texttt{@tinygs\_personal\_bot}, which provided a login URL for managing the station online.
+\end{itemize}
+
+From the web dashboard, information such as the antenna type and operating range was updated. A quarter-wave grounded antenna with an operating range of approximately 433 MHz was used. Additionally, a brief description of the station was added for other TinyGS users.
+
+\section{Antenna Design}
+Once the station was connected to TinyGS and the MQTT server, receiving packets from satellites required an efficient antenna design and an unobstructed sky view.
+
+The TinyGS configuration site suggests various antenna designs, one of which is the \href{http://www.n1gy.com/simple-ground-plane-antennas.html}{quarter-wave grounded antenna design}. This design was implemented and demonstrated acceptable performance during daylight hours.
+
+However, packet reception varied significantly depending on satellite coverage over Uganda.
+
+\section{Data Analysis}
+To evaluate the performance of the ground station, packet transmission data was collected over multiple days. The following aspects were analyzed:
+\begin{itemize}
+    \item Number of packets received per hour.
+    \item Signal strength (RSSI) variation over time.
+    \item Effect of environmental conditions on signal reception.
+    \item Comparison of antenna performance at different times of the day.
+\end{itemize}
+
+Preliminary results indicated that packet reception was highest during the early morning and late evening when satellite coverage was optimal. Additionally, stronger signal reception was observed at higher elevation angles. Further data analysis is required to optimize antenna orientation and station placement for improved performance.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{1}
+    \bibitem{tinygs} TinyGS Project. Available at \url{https://tinygs.com}.
+    \bibitem{tinygsinstaller} TinyGS Firmware Installer. Available at \url{http://installer.tinygs.com}.
+    \bibitem{latlong} Latitude and Longitude Finder. Available at \url{http://latlong.net}.
+    \bibitem{n1gyantenna} Simple Ground Plane Antennas. Available at \url{http://www.n1gy.com/simple-ground-plane-antennas.html}.
+\end{thebibliography}
+
+\end{document}
+
